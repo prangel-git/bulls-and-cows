@@ -1,6 +1,6 @@
 use crate::{CodeDigits, IndexToIndexMap, IndexSet, CODELENGTH};
 
-pub fn find_matching(code_a: CodeDigits, code_b: CodeDigits) -> IndexToIndexMap {
+pub fn find_matching(code_a: &CodeDigits, code_b: &CodeDigits) -> IndexToIndexMap {
     let mut matching = IndexToIndexMap::new();
     let mut used_indexes = IndexSet::new();
     
@@ -11,8 +11,8 @@ pub fn find_matching(code_a: CodeDigits, code_b: CodeDigits) -> IndexToIndexMap 
 }
 
 fn find_all_matchings(
-    code_a: CodeDigits, 
-    code_b: CodeDigits, 
+    code_a: &CodeDigits, 
+    code_b: &CodeDigits, 
     matching: &mut IndexToIndexMap,
     used_indexes: &mut std::collections::HashSet<usize>
 ) {
@@ -28,8 +28,8 @@ fn find_all_matchings(
 }
 
 fn find_matchings_with_same_index(
-    code_a: CodeDigits, 
-    code_b: CodeDigits, 
+    code_a: &CodeDigits, 
+    code_b: &CodeDigits, 
     matching: &mut IndexToIndexMap, 
     used_indexes: &mut IndexSet
 ) {
@@ -57,7 +57,7 @@ mod tests {
             (3,3)
         ]);
 
-        assert_eq!(expected_answer, find_matching(code_a, code_b));
+        assert_eq!(expected_answer, find_matching(&code_a, &code_b));
     }
 
     #[test]
@@ -69,7 +69,7 @@ mod tests {
             (0,0)
         ]);
 
-        assert_eq!(expected_answer, find_matching(code_a, code_b));
+        assert_eq!(expected_answer, find_matching(&code_a, &code_b));
     }
 
     #[test]
@@ -81,7 +81,7 @@ mod tests {
             (0,0)
         ]);
 
-        assert_eq!(expected_answer, find_matching(code_a, code_b));
+        assert_eq!(expected_answer, find_matching(&code_a, &code_b));
     }
 
     #[test]
@@ -93,6 +93,6 @@ mod tests {
             (1,1)
         ]);
 
-        assert_eq!(expected_answer, find_matching(code_a, code_b));
+        assert_eq!(expected_answer, find_matching(&code_a, &code_b));
     }
 }

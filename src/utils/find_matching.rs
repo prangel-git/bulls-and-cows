@@ -4,13 +4,18 @@ pub fn find_matching(code_a: CodeDigits, code_b: CodeDigits) -> IndexToIndexMap 
     let mut matching = IndexToIndexMap::new();
     let mut used_indexes = IndexSet::new();
     
-    for i in 0..4 {
-        if code_a[i] == code_b[i] {
-            matching.insert(i, i);
-            used_indexes.insert(i);
-        } 
-    }
+    find_matchings_with_same_index(code_a, code_b, &mut matching, &mut used_indexes);
+    find_all_matchings(code_a, code_b, &mut matching, &mut used_indexes); 
 
+    return matching;
+}
+
+fn find_all_matchings(
+    code_a: CodeDigits, 
+    code_b: CodeDigits, 
+    matching: &mut IndexToIndexMap,
+    used_indexes: &mut std::collections::HashSet<usize>
+) {
     for i in 0..4 {
         for j in 0..4 {
             if code_a[i] == code_b[j] && !matching.contains_key(&i) && !used_indexes.contains(&j) {
@@ -19,9 +24,21 @@ pub fn find_matching(code_a: CodeDigits, code_b: CodeDigits) -> IndexToIndexMap 
                 break;
             }
         }
-    } 
+    }
+}
 
-    return matching;
+fn find_matchings_with_same_index(
+    code_a: CodeDigits, 
+    code_b: CodeDigits, 
+    matching: &mut IndexToIndexMap, 
+    used_indexes: &mut IndexSet
+) {
+    for i in 0..4 {
+        if code_a[i] == code_b[i] {
+            matching.insert(i, i);
+            used_indexes.insert(i);
+        } 
+    }
 }
 
 #[cfg(test)]

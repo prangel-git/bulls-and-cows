@@ -1,4 +1,4 @@
-use crate::{CodeDigits, Clue, CODEMAX};
+use crate::{CodeDigits, Clue, CODEMAX, CODELENGTH};
 use crate::utils::{codeword_to_codedigits, find_bulls_and_cows};
 
 pub struct MindState {
@@ -21,12 +21,25 @@ impl MindState {
     pub fn get_guess(&self) -> CodeDigits {
         if self.possible_secrets.is_empty() {
             codeword_to_codedigits(0)
+        } else if self.possible_secrets.len() == (CODEMAX as usize) {
+            initial_guess()
         } else {
             self.possible_secrets[0]
         }
     }
 }    
 
+fn initial_guess() -> CodeDigits {
+    let mut initial = [0; CODELENGTH];
+    let mut current = 0;
+    
+    for i in 0..CODELENGTH {
+        initial[i] = current;
+        current = (current + 1) % 2;
+    }
+
+    return initial;
+}
 
 #[cfg(test)]
 mod tests{

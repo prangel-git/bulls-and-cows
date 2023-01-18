@@ -1,21 +1,16 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::{HashSet};
 
-use crate::{Clue, CodeWord, CODEMAX};
+use crate::{CodeDigits, CODEMAX};
+use crate::utils::codeword_to_codedigits;
 
-#[derive(PartialEq, Eq, Debug)]
-pub struct MindState {
-    pub guess_clues: HashMap<CodeWord, Clue>,
-    pub consistent_secrets: HashSet<CodeWord>
-}
+pub type MindState = HashSet<CodeDigits>;
 
-impl MindState {
-    pub fn new() -> Self {
-        MindState { 
-            guess_clues: HashMap::new(), 
-            consistent_secrets: HashSet::from_iter(0..CODEMAX) 
-         }
-    }    
-}
+pub fn new() -> MindState {
+    HashSet::from_iter(
+        (0..CODEMAX).map(|x| codeword_to_codedigits(x))
+    )
+}    
+
 
 #[cfg(test)]
 mod tests{
@@ -23,12 +18,6 @@ mod tests{
 
     #[test]
     fn new_returns_a_valid_mindstate() {
-        let expected_mindstate = MindState { 
-            guess_clues: HashMap::new(), 
-            consistent_secrets: HashSet::from_iter(0..CODEMAX) 
-         };
-        
-         assert_eq!(MindState::new(), expected_mindstate)
-         
+        assert_eq!(new().len(), CODEMAX as usize)
     }
 }

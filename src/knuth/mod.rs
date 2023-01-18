@@ -1,3 +1,1 @@
-mod mindstate;
-
-pub use mindstate::MindState;
+pub mod mindstate;

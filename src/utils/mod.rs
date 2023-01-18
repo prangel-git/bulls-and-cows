@@ -1,4 +1,5 @@
 pub mod find_matching;
+pub mod find_bulls_and_cows;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

@@ -14,7 +14,11 @@ pub fn update_mindstate(guess: &CodeDigits, clue: &Clue, mindstate: &mut MindSta
 }
 
 pub fn get_guess(mindstate: &MindState) -> CodeDigits {
-    return mindstate[0].clone()
+    if mindstate.is_empty() {
+        codeword_to_codedigits(0)
+    } else {
+        mindstate[0].clone()
+    }
 }
 
 #[cfg(test)]
@@ -55,6 +59,13 @@ mod tests{
         update_mindstate(&guess, &clue, &mut mindstate);
 
         assert_eq!(get_guess(&mindstate), [1,0,3,2])
+    }
+
+    #[test]
+    fn get_guess_returns_0000_when_mindstate_is_empty() {
+        let mindstate = Vec::new();
+
+        assert_eq!(get_guess(&mindstate), [0,0,0,0])
     }
 
     

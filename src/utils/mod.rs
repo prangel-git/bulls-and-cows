@@ -1,17 +1,5 @@
-pub mod find_matching;
-pub mod find_bulls_and_cows;
+mod find_matching;
+mod find_bulls_and_cows;
 
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+pub use find_matching::find_matching;
+pub use find_bulls_and_cows::find_bulls_and_cows;

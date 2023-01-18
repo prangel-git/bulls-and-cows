@@ -4,6 +4,7 @@ const CODELENGTH: usize = 4;
 
 type Digit = u8;
 type CodeDigits = [Digit; CODELENGTH];
+type CodeWord = u16;
 type IndexToIndexMap = HashMap<usize, usize>;
 type IndexSet = HashSet<usize>;
 

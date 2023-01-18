@@ -38,7 +38,7 @@ fn initial_guess() -> CodeDigits {
         current = (current + 1) % 2;
     }
 
-    return initial;
+    initial
 }
 
 #[cfg(test)]

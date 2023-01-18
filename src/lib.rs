@@ -1,6 +1,7 @@
 use std::collections::{HashMap, HashSet};
 
 const CODELENGTH: usize = 4;
+const CODEMAX: u16 = 10usize.pow(CODELENGTH as u32) as u16;
 
 type Digit = u8;
 type CodeDigits = [Digit; CODELENGTH];

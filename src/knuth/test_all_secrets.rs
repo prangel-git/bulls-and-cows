@@ -14,5 +14,5 @@ pub fn test_all_secrets() -> Vec<(CodeWord, NumAttempts)> {
         secret_vs_attempts.push((codeword, log.len() as NumAttempts));
     }
 
-    return secret_vs_attempts;
+    secret_vs_attempts
 }

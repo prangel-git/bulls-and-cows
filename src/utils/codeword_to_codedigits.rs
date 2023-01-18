@@ -11,7 +11,7 @@ pub fn codeword_to_codedigits(word: CodeWord) -> CodeDigits {
         current_word /= 10;
     }
 
-    return digits;
+    digits
 }
 
 #[cfg(test)]

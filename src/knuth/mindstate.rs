@@ -9,7 +9,7 @@ impl MindState {
     pub fn new() -> Self {
         MindState { 
             possible_secrets: Vec::from_iter(
-            (0..CODEMAX).map(|x| codeword_to_codedigits(x))
+            (0..CODEMAX).map(codeword_to_codedigits)
         )
         } 
     }  
@@ -22,7 +22,7 @@ impl MindState {
         if self.possible_secrets.is_empty() {
             codeword_to_codedigits(0)
         } else {
-            self.possible_secrets[0].clone()
+            self.possible_secrets[0]
         }
     }
 }    

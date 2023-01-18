@@ -7,7 +7,7 @@ pub fn find_matching(code_a: &CodeDigits, code_b: &CodeDigits) -> IndexToIndexMa
     find_matchings_with_same_index(code_a, code_b, &mut matching, &mut used_indexes);
     find_all_matchings(code_a, code_b, &mut matching, &mut used_indexes); 
 
-    return matching;
+    matching
 }
 
 fn find_all_matchings(

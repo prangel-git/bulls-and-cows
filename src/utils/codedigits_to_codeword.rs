@@ -8,7 +8,7 @@ pub fn codedigits_to_codeword(digits: CodeDigits) -> CodeWord {
         codeword += digits[i] as u16;
     }
 
-    return codeword;
+    codeword
 }
 
 #[cfg(test)]

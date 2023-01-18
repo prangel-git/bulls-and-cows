@@ -1,4 +1,4 @@
-use crate::{CodeDigits, IndexToIndexMap, IndexSet};
+use crate::{CodeDigits, IndexToIndexMap, IndexSet, CODELENGTH};
 
 pub fn find_matching(code_a: CodeDigits, code_b: CodeDigits) -> IndexToIndexMap {
     let mut matching = IndexToIndexMap::new();
@@ -16,8 +16,8 @@ fn find_all_matchings(
     matching: &mut IndexToIndexMap,
     used_indexes: &mut std::collections::HashSet<usize>
 ) {
-    for i in 0..4 {
-        for j in 0..4 {
+    for i in 0..CODELENGTH {
+        for j in 0..CODELENGTH {
             if code_a[i] == code_b[j] && !matching.contains_key(&i) && !used_indexes.contains(&j) {
                 matching.insert(i, j);
                 used_indexes.insert(j);
@@ -33,7 +33,7 @@ fn find_matchings_with_same_index(
     matching: &mut IndexToIndexMap, 
     used_indexes: &mut IndexSet
 ) {
-    for i in 0..4 {
+    for i in 0..CODELENGTH {
         if code_a[i] == code_b[i] {
             matching.insert(i, i);
             used_indexes.insert(i);

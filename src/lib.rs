@@ -15,3 +15,4 @@ pub struct Clue {
 }
 
 pub mod utils;
+pub mod knuth;
